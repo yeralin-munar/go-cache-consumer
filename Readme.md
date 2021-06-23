@@ -4,7 +4,11 @@ Codding interview challenge that reproduce simple service which get data from UR
 # To start cache service
 Run
 > go mod vendor
+
+
 > make build
+
+
 > docker-compose up -d --remove-orphans
 
 # To make request to cache service
