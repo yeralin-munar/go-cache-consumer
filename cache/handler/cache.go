@@ -100,5 +100,5 @@ func (c *CacheService) getRandomTTL() time.Duration {
 	rand.Seed(int64(rand.Int()))
 	ttl := rand.Intn(c.config.MaxTimeout-c.config.MinTimeout) + c.config.MinTimeout
 	log.Printf("Random TTL: %d", ttl)
-	return time.Duration(ttl) * 300
+	return time.Duration(ttl)
 }
