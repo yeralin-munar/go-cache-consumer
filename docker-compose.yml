@@ -1,0 +1,24 @@
+version: '3.4'
+services:
+  cache:
+    container_name: cache-service
+    image: alpine:3.13
+    # build:
+    #   context: .
+    #   dockerfile: ./docker/cache.df
+      # target: builder
+    depends_on:
+      - redis
+    volumes:
+      - ./cache/build:/opt/cache:rw
+      - ./config.yml:/opt/cache/config.yml:rw
+    command: sh -c "cd /opt/cache && ./cache"
+    ports:
+      - "7777:7777"
+  redis:
+    container_name: redis
+    image: redis
+    volumes:
+      - ./data/redis:/data:rw,z
+    ports:
+      - "6379:6379"
